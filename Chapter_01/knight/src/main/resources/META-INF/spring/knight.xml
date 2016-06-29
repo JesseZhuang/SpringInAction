@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--inject quest bean-->
+  <bean id="knight" class="sia.knights.BraveKnight">
+    <constructor-arg ref="quest" />
+  </bean>
+
+  <!--create a SlayDragonQuest, inject System.out-->
+  <bean id="quest" class="sia.knights.SlayDragonQuest">
+    <constructor-arg value="#{T(System).out}" />
+  </bean>
+
+</beans>
