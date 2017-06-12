@@ -15,11 +15,12 @@ public class JDBCExample {
     private MysqlDataSource dataSource;
 
     public JDBCExample(){
+        // local MysSQL database server
         dataSource = new MysqlDataSource();
-        dataSource.setUser("zexi");
-        dataSource.setPassword("zz123");
+        dataSource.setUser("username");
+        dataSource.setPassword("paddword");
         dataSource.setServerName("localhost");
-        dataSource.setDatabaseName("appstore");
+        dataSource.setDatabaseName("dbname");
     }
 
     // with spring template reduces boiler plate code
@@ -28,6 +29,7 @@ public class JDBCExample {
         return jdbcTemplate.queryForObject(
                 "select id, firstname, lastname, salary " +
                         "from employee where id=?",
+                // maps result to Employee object
                 new RowMapper<Employee>() {
                     public Employee mapRow(ResultSet rs,
                                            int rowNum) throws SQLException {

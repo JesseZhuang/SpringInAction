@@ -2,11 +2,9 @@ package sia.knights;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.
-                   ClassPathXmlApplicationContext;
-import sia.knights.config.KnightConfig;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class KnightMain {
+public class KnightXMLAnnotationConfig {
 
   private static void useXML(){
     // An application context loads bean definitions and wires them together.
@@ -19,7 +17,7 @@ public class KnightMain {
   }
 
   private static void useAnnotation(){
-    ApplicationContext context = new AnnotationConfigApplicationContext(KnightConfig.class);
+    ApplicationContext context = new AnnotationConfigApplicationContext(sia.knights.config.KnightConfig.class);
     Knight knight = context.getBean(Knight.class);
     knight.embarkOnQuest();
     //context.close();
