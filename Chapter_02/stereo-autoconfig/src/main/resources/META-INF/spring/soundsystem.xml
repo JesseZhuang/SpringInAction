@@ -7,6 +7,12 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+  <!-- One special namespace(p namespace) is not defined in an XSD file, and only exists in the core of Spring itself.
+   p-namespace doesn't need a schema definition and is an alternative way of configuring your properties differently
+   than the way you have seen so far. -->
+
+  <!-- XML is an option for enabling component scanning -->
+
   <context:component-scan base-package="soundsystem" />
 
 </beans>
