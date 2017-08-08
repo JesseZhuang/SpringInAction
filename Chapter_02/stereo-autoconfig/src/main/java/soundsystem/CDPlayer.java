@@ -18,11 +18,21 @@ public class CDPlayer implements MediaPlayer {
   // pass in a bean that is assignable to CompactDisc, SgtPepper class
   @Autowired
   public CDPlayer(CompactDisc cd) {
+        this.cd = cd;
+    }
+
+  public void play() {
+        cd.play();
+    }
+
+  @Autowired
+  public void setCompactDisc(CompactDisc cd) {
     this.cd = cd;
   }
 
-  public void play() {
-    cd.play();
+  @Autowired
+  public void insertDisc(CompactDisc cd) {
+    this.cd = cd;
   }
 
 }

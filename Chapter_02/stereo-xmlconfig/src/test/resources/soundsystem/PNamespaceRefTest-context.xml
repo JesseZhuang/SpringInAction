@@ -9,8 +9,9 @@
     <constructor-arg value="The Beatles" />
   </bean>
         
-  <bean id="cdPlayer" class="soundsystem.properties.CDPlayer">
-    <property name="compactDisc" ref="compactDisc" />
+  <bean id="cdPlayer" class="soundsystem.properties.CDPlayer"
+    p:compactDisc-ref="compactDisc" />
+
   </bean>
 
 </beans>

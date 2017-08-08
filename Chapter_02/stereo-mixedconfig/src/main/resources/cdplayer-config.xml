@@ -6,6 +6,8 @@
 
   <bean class="soundsystem.CDConfig" />
 
+  <!--<import resource="cd-config.xml" />-->
+
   <bean id="cdPlayer"
         class="soundsystem.CDPlayer"
         c:cd-ref="compactDisc" />

@@ -4,10 +4,16 @@
   xmlns:c="http://www.springframework.org/schema/c"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <!--The most basic XML elements for wiring beans are contained in the spring-beans schema,
+  which is declared as the root namespace of this XML file.-->
+
   <bean id="compactDisc" class="soundsystem.SgtPeppers" />
+  <!--if no id specified, id will be soundsystem.SgtPeppers#0
+  passive, spring creates SgtPeppers instance for you, less powerful to customize -->
         
   <bean id="cdPlayer" class="soundsystem.CDPlayer"
         c:cd-ref="compactDisc" />
+  <!--c:_-ref="compactDisc" since just one arg or c:_0-ref="compactDisc" by position-->
 
 </beans>
 

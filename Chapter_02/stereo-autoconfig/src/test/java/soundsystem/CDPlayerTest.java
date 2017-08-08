@@ -18,7 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes=CDPlayerConfig.class)
 public class CDPlayerTest {
 
-  // http://stefanbirkner.github.io/system-rules/index.html
+  // http://stefanbirkner.github.io/system-rules/index.html Junit rule
+  // Testing code that uses System.out.println() is a tricky business.
   @Rule
   public final StandardOutputStreamLog log = new StandardOutputStreamLog();
 
@@ -29,7 +30,7 @@ public class CDPlayerTest {
   // creates bean from interface CompactDisc
   @Autowired
   private CompactDisc cd;
-  
+
   @Test
   public void cdShouldNotBeNull() {
     assertNotNull(cd);
@@ -39,8 +40,8 @@ public class CDPlayerTest {
   public void play() {
     player.play();
     assertEquals(
-        "Playing Sgt. Pepper's Lonely Hearts Club Band by The Beatles\n", 
-        log.getLog());
+            "Playing Sgt. Pepper's Lonely Hearts Club Band by The Beatles\n",
+            log.getLog());
   }
 
 }

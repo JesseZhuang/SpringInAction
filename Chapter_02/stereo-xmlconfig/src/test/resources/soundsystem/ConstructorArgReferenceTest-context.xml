@@ -4,7 +4,11 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="compactDisc" class="soundsystem.SgtPeppers" />
-        
+
+  <!--The difference between these two choices is largely one of verbosity. As you’ll see, the <constructor-arg>
+  element is generally more verbose than using the c-namespace and results in XML that is more difficult to read.
+  On the other hand, <constructor- arg> can do a few things that the c-namespace can’t.-->
+
   <bean id="cdPlayer" class="soundsystem.CDPlayer">
     <constructor-arg ref="compactDisc" />
   </bean>
