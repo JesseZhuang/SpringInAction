@@ -16,6 +16,18 @@
       <jdbc:script location="classpath:test-data.sql" />
     </jdbc:embedded-database>
   </beans>
+
+  <beans profile="qa">
+    <bean id="dataSource"
+      class="org.apache.commons.dbcp.BasicDataSource"
+      destroy-method="close"
+      p:url="jdbc:h2:tcp://dbserver/~/test"
+      p:driverClassName="org.h2.Driver"
+      p:username="sa"
+      p:password="password"
+      p:initialSize="20"
+      p:maxActive="30" />
+  </beans>
   
   <beans profile="prod">
     <jee:jndi-lookup id="dataSource"

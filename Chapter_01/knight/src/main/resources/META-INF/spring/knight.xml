@@ -12,6 +12,7 @@
 
   <!--create a SlayDragonQuest, inject System.out-->
   <bean id="quest" class="sia.knights.SlayDragonQuest">
+    <!--SpEL The T() operator evaluates java.lang.System as a type-->
     <constructor-arg value="#{T(System).out}" />
   </bean>
 

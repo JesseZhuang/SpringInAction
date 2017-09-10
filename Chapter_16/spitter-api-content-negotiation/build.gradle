@@ -1,6 +1,7 @@
 apply plugin: 'eclipse'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
 
 dependencies {
     compile "org.springframework:spring-webmvc:$springVersion"
@@ -25,7 +26,7 @@ repositories {
     maven { url 'http://maven.springframework.org/release' }
     maven { url 'http://maven.springframework.org/milestone' }
     maven { url 'http://maven.springframework.org/snapshot' }
-    maven { url 'http://download.java.net/maven/2' }
+    // maven { url 'http://download.java.net/maven/2' } cannot update in intelliJ
     mavenCentral()
 }
 
@@ -34,7 +35,7 @@ task wrapper(type: Wrapper) {
 }
 
 war {
-        baseName = 'spittr'
+        baseName = 'spittr-negotiation'
 }
 
 eclipse {

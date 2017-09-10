@@ -2,6 +2,8 @@ package com.soundsystem;
 
 import static org.junit.Assert.*;
 
+import com.soundsystem.autoconfig.BlankDiscAuto;
+import com.soundsystem.autoconfig.BlankDiscAutoconfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanCreationException;
@@ -64,6 +66,21 @@ public class EnvironmentInjectionTest {
       assertEquals("Sgt. Peppers Lonely Hearts Club Band", blankDisc.getTitle());
     }
     
+  }
+
+  @RunWith(SpringJUnit4ClassRunner.class)
+  @ContextConfiguration(classes = BlankDiscAutoconfig.class)
+  public static class InjectFromAutoconfig {
+
+    @Autowired
+    private BlankDiscAuto blankDiscAuto;
+
+    @Test
+    public void assertBlankDiscProperties() {
+      assertEquals("The Beatles", blankDiscAuto.getArtist());
+      assertEquals("Sgt. Peppers Lonely Hearts Club Band", blankDiscAuto.getTitle());
+    }
+
   }
 
 }
