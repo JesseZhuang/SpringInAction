@@ -5,6 +5,9 @@ import java.util.Date;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+/**
+ * using Apache Commons Lang for easy implementation of the equals() and hashCode() methods
+ */
 public class Spittle {
 
   private final Long id;

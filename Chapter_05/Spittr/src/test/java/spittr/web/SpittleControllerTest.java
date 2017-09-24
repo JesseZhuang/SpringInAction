@@ -20,7 +20,7 @@ import spittr.web.SpittleController;
 public class SpittleControllerTest {
 
   @Test
-  public void houldShowRecentSpittles() throws Exception {
+  public void shouldShowRecentSpittles() throws Exception {
     List<Spittle> expectedSpittles = createSpittleList(20);
     SpittleRepository mockRepository = mock(SpittleRepository.class);
     when(mockRepository.findSpittles(Long.MAX_VALUE, 20))
@@ -44,12 +44,16 @@ public class SpittleControllerTest {
     SpittleRepository mockRepository = mock(SpittleRepository.class);
     when(mockRepository.findSpittles(238900, 50))
         .thenReturn(expectedSpittles);
-    
+    // this test calls setSingleView() on the MockMvc builder. This is so the mock framework won’t try to resolve the
+    // view name coming from the controller on its own.
+    // left to its default view resolution, MockMvc will fail because the view path will be confused with the
+    // controller’s path.
     SpittleController controller = new SpittleController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller)
         .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
         .build();
 
+    // pass max and count query parameters
     mockMvc.perform(get("/spittles?max=238900&count=50"))
       .andExpect(view().name("spittles"))
       .andExpect(model().attributeExists("spittleList"))

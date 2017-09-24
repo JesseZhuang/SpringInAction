@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+                          http://www.springframework.org/schema/aop/spring-aop.xsd
+                          http://www.springframework.org/schema/beans
+                          http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context
+                          http://www.springframework.org/schema/context/spring-context.xsd">
+  <context:component-scan base-package="concert"/>
+  <aop:aspectj-autoproxy/>
+  <bean class="concert.Audience"/>
+
+  <bean id="encoreableDelegate"
+        class="concert.DefaultEncoreable" />
+
+  <!--But if you need to declare aspects without annotating the advice class, then you must turn to XML configuration-->
+  <!--This makes Spring’s XML configura- tion for AOP a handy way to use types defined in third-party libraries as
+  advice, even though you can’t annotate them with AspectJ aspects.-->
+  <aop:config>
+    <aop:aspect ref="audience">
+      <!--define pointcut-->
+      <aop:pointcut id="performance"
+                    expression="execution(** concert.Performance.perform(..))"/>
+      <aop:before
+          pointcut-ref="performance"
+          method="silenceCellPhones"/>
+      <aop:before
+          pointcut-ref="performance"
+          method="takeSeats"/>
+      <aop:after-returning pointcut="execution(** concert.Performance.perform(..))" method="applause"/>
+      <aop:after-throwing pointcut="execution(** concert.Performance.perform(..))" method="demandRefund"/>
+      <aop:around pointcut-ref="performance"
+                  method="watchPerformance"/>
+      <aop:declare-parents
+          types-matching="concert.Performance+"
+          implement-interface="concert.Encoreable"
+          default-impl="concert.DefaultEncoreable"
+      />
+      <aop:declare-parents
+          types-matching="concert.Performance+"
+          implement-interface="concert.Encoreable"
+          delegate-ref="encoreableDelegate"
+      />
+    </aop:aspect>
+  </aop:config>
+
+
+
+</beans>

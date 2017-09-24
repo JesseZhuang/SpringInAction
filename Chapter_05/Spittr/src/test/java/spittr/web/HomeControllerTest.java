@@ -1,4 +1,5 @@
 package spittr.web;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
@@ -13,6 +14,9 @@ public class HomeControllerTest {
   @Test
   public void testHomePage() throws Exception {
     HomeController controller = new HomeController();
+    assertEquals("home", controller.home(null));
+    // asserts that home() will be called when a GET request for / comes in
+    // truly test that home is the name of the view
     MockMvc mockMvc = standaloneSetup(controller).build();
     mockMvc.perform(get("/"))
            .andExpect(view().name("home"));

@@ -16,6 +16,7 @@ import spittr.config.RootConfig.WebPackage;
 @ComponentScan(basePackages={"spittr"}, 
     excludeFilters={
         @Filter(type=FilterType.CUSTOM, value=WebPackage.class)
+        // @Filter(type=FilterType.ANNOTATION, value=EnableWebMvc.class)
     })
 public class RootConfig {
   public static class WebPackage extends RegexPatternTypeFilter {

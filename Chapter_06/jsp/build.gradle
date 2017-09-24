@@ -33,7 +33,7 @@ task wrapper(type: Wrapper) {
 }
 
 war {
-        baseName = 'spittr'
+        baseName = 'spittr-jsp'
 }
 
 eclipse {

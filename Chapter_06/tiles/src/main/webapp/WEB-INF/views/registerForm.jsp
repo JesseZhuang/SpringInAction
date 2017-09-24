@@ -3,6 +3,7 @@
 <%@ page session="false" %>
 <h1>Register</h1>
 
+<!-- Notice that the <form> tag doesn’t have an action parameter set. it will be posted back to /spitters/register -->
 <sf:form method="POST" commandName="spitter" >
   <sf:errors path="*" element="div" cssClass="errors" />
   <sf:label path="firstName" 

@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 jar {
-    baseName = 'stereo-xmlconfig'
+    baseName = 'aop'
     version =  '0.0.1-SNAPSHOT'
 }
 
@@ -14,10 +14,13 @@ repositories {
 
 dependencies {
     compile("org.springframework:spring-context:${springVersion}")
+//    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
     compile("org.aspectj:aspectjweaver:${aspectJVersion}")
 
+
     testCompile("org.springframework:spring-test:${springVersion}")
-    testCompile "com.github.stefanbirkner:system-rules:${systemRulesVersion}"
+    testCompile("org.mockito:mockito-core:${mockitoVersion}")
+    testCompile("org.springframework:spring-test:${springVersion}")
 }
 
 task wrapper(type: Wrapper) {
