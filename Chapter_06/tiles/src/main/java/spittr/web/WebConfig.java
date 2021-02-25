@@ -34,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     TilesConfigurer tiles = new TilesConfigurer();
     tiles.setDefinitions(new String[] {
         "/WEB-INF/layout/tiles.xml",
-        "/WEB-INF/views/**/tiles.xml"
+        "/WEB-INF/views/**/tiles.xml" // Ant-style wildcards **
     });
     tiles.setCheckRefresh(true);
     return tiles;

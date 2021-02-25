@@ -16,5 +16,21 @@
     <a href="<s:url value="/spittles" />">Spittles</a> | 
     <a href="${registerUrl}">Register</a>
 
+
+    <s:url href="/spittles" var="spittlesUrl">
+      <s:param name="max" value="60" />
+      <s:param name="count" value="20" />
+    </s:url>
+
+    <s:url href="/spitter/{username}" var="spitterUrl">
+      <s:param name="username" value="jbauer" />
+    </s:url>
+
+    <!-- /spitter/spittles?max=60&amp;count=20 -->
+    <s:url value="/spittles" htmlEscape="true">
+      <s:param name="max" value="60" />
+      <s:param name="count" value="20" />
+    </s:url>
+
   </body>
 </html>

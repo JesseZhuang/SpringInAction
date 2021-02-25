@@ -35,6 +35,10 @@ public class SpittleController {
     return spittleRepository.findSpittles(max, count);
   }
 
+  /**
+   * If findOne() returns null, then a SpittleNotFoundException is thrown. In fact, in the event of any exception
+   * that isn’t otherwise mapped, the response will always have a 500 status code.
+   */
   @RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
   public String spittle(
       @PathVariable("spittleId") long spittleId, 
@@ -59,7 +63,7 @@ public class SpittleController {
   }
   
   @ExceptionHandler(DuplicateSpittleException.class)
-  public String handleNotFound() {
+  public String handleDuplicateSpittle() {
     return "error/duplicate";
   }
 

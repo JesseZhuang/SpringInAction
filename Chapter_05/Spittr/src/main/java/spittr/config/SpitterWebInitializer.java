@@ -6,7 +6,7 @@ import spittr.web.WebConfig;
 
 /**
  * <p>In a Servlet 3.0 environment, the container looks for any classes in the classpath that implement the
- * javax.servlet .ServletContainerInitializer interface; if any are found, they’re used to config- ure
+ * javax.servlet .ServletContainerInitializer interface; if any are found, they’re used to configure
  * the servlet container.
  * <p>Spring supplies an implementation of that interface called SpringServlet-ContainerInitializer that, in turn,
  * seeks out any classes that implement WebApplicationInitializer and delegates to them for configuration.
@@ -21,7 +21,7 @@ import spittr.web.WebConfig;
 public class SpitterWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   /**
-   * The @Configuration class’s returned get- RootConfigClasses() will be used to configure the application context
+   * The @Configuration class’s returned getRootConfigClasses() will be used to configure the application context
    * created by ContextLoaderListener.
    * @return
    */
@@ -32,7 +32,7 @@ public class SpitterWebInitializer extends AbstractAnnotationConfigDispatcherSer
 
   /**
    * <p>
-   * Askes that DispatcherServlet load its application context with beans defined in the WebConfig
+   * Asks that DispatcherServlet load its application context with beans defined in the WebConfig
    * configuration class (using Java configuration).
    * <p>
    * But in Spring web applications, there’s often another application context. This other application context is

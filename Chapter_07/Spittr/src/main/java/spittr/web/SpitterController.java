@@ -34,7 +34,8 @@ public class SpitterController {
     model.addAttribute(new Spitter());
     return "registerForm";
   }
-  
+
+//  If you’re deploying your application to a Servlet 3.0 container
 //  @RequestMapping(value="/register", method=POST)
 //  public String processRegistration(
 //      @RequestPart(value="profilePictures", required=false) Part fileBytes,
@@ -44,6 +45,7 @@ public class SpitterController {
 //    if (errors.hasErrors()) {
 //      return "registerForm";
 //    }
+//    profilePicture.write("/data/spittr/" + profilePicture.getOriginalFilename());
 //    
 //    spitterRepository.save(spitter);
 //    redirectAttributes.addAttribute("username", spitter.getUsername());
@@ -75,5 +77,34 @@ public class SpitterController {
     }
     return "profile";
   }
+
+//  private void saveImage(MultipartFile image)
+//          throws ImageUploadException {
+//    try {
+        // Set up S3 service
+//      AWSCredentials awsCredentials =
+//              new AWSCredentials(s3AccessKey, s2SecretKey);
+//      S3Service s3 = new RestS3Service(awsCredentials);
+//      S3Bucket bucket = s3.getBucket("spittrImages");
+//      S3Object imageObject =
+//              new S3Object(image.getOriginalFilename());
+        // Create S3 bucket and object
+//      imageObject.setDataInputStream(
+//              image.getInputStream());
+//      // Set image data
+//      imageObject.setContentLength(image.getSize());
+//      imageObject.setContentType(image.getContentType());
+//      AccessControlList acl = new AccessControlList();
+//      acl.setOwner(bucket.getOwner());
+//      acl.grantPermission(GroupGrantee.ALL_USERS,
+        // Set permissions
+//              Permission.PERMISSION_READ);
+//      imageObject.setAcl(acl);
+//      s3.putObject(bucket, imageObject);
+//    } catch (Exception e) {
+        // Save image
+//      throw new ImageUploadException("Unable to save image", e);
+//    }
+//  }
   
 }

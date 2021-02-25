@@ -10,6 +10,7 @@
   <body>
     <h1>Register</h1>
 
+    <!-- value attribute will be set to the value of the model object’s prop- erty specified in the path attribute. -->
     <sf:form method="POST" commandName="spitter" >
       <sf:errors path="*" element="div" cssClass="errors" />
       <sf:label path="firstName" 

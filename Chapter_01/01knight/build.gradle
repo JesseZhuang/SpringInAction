@@ -1,9 +1,9 @@
-wapply plugin: 'java'
+apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 jar {
-    baseName = 'aop'
+    baseName = '01knight'
     version =  '0.0.1-SNAPSHOT'
 }
 
@@ -14,15 +14,16 @@ repositories {
 
 dependencies {
     compile("org.springframework:spring-context:${springVersion}")
-//    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
+    compile("org.springframework:spring-jdbc:${springVersion}")
     compile("org.aspectj:aspectjweaver:${aspectJVersion}")
+    compile("log4j:log4j:${log4jVersion}")
+    compile("mysql:mysql-connector-java:${mysqlVersion}")
 
-
-    testCompile("org.springframework:spring-test:${springVersion}")
+    testCompile("junit:junit:${junitVersion}")
     testCompile("org.mockito:mockito-core:${mockitoVersion}")
     testCompile("org.springframework:spring-test:${springVersion}")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '4.8'
 }

@@ -17,11 +17,20 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("spittr.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
+  /**
+   * <p>InternalResourceViewResolver can resolve view names into JSP files fronted by JstlView to expose JSTL locale and
+   * resource bundle variables to JSTL’s formatting and message tags.
+   * <p>Spring provides two JSP tag libraries, one for form-to-model binding and one providing general utility features.
+   * @return
+   */
   @Bean
   public ViewResolver viewResolver() {
     InternalResourceViewResolver resolver = new InternalResourceViewResolver();
     resolver.setPrefix("/WEB-INF/views/");
     resolver.setSuffix(".jsp");
+    // JstlView
+    resolver.setViewClass(
+            org.springframework.web.servlet.view.JstlView.class);
     return resolver;
   }
   
@@ -32,7 +41,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
   
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    // TODO Auto-generated method stub
     super.addResourceHandlers(registry);
   }
   
@@ -41,6 +49,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     ReloadableResourceBundleMessageSource messageSource = 
         new ReloadableResourceBundleMessageSource();
     messageSource.setBasename("file:///Users/habuma/messages");
+    // By setting it to messages, you can expect ResourceBundleMessageResolver to resolve messages from properties
+    // files at the root of the classpath whose names are derived from that base name.
+    // messageSource.setBasename("messages");
+    // messageSource.setBasename("file:///etc/spittr/messages");
     messageSource.setCacheSeconds(10);
     return messageSource;
   }
